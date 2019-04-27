@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 import tcl.lang.ManagedSystemInStream;
@@ -355,15 +356,26 @@ public class JavaProcess extends TclProcess {
 		 */
 		if (process == null)
 			throw new IllegalThreadStateException("Process not yet started");
-		final String[] pidFields = { "pid", "handle" };
 
-		for (String pidField : pidFields) {
-			try {
-				Field f = process.getClass().getDeclaredField(pidField);
-				f.setAccessible(true);
-				return f.getInt(process);
-			} catch (Exception ee) {
-				// do nothing
+		try {
+			/*
+			 * First attempt to look for a method of pid
+			 * This addresses changes in Java 9+
+			 */
+			Method m = Class.forName("java.lang.Process").getDeclaredMethod("pid");
+			return ((Long)m.invoke(process)).intValue();
+		}
+		catch (Exception e) {
+			final String[] pidFields = { "pid", "handle" };
+
+			for (String pidField : pidFields) {
+				try {
+					Field f = process.getClass().getDeclaredField(pidField);
+					f.setAccessible(true);
+					return f.getInt(process);
+				} catch (Exception ee) {
+					// do nothing
+				}
 			}
 		}
 		return -1; // couldn't get pid through reflection
