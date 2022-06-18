@@ -2,12 +2,15 @@ MVN_FLAGS=--global-toolchains `pwd`/toolchains.xml
 MVN=mvn $(MVN_FLAGS)
 
 .PHONY: default
-default:
-	$(MVN) compile
+default: package
 
 .PHONY: package
 package:
 	$(MVN) package
+
+.PHONY: compile
+compile:
+	$(MVN) compile
 
 .PHONY: test
 test:
@@ -17,3 +20,6 @@ test:
 clean:
 	$(MVN) clean
 
+.PHONY: clean-jar
+clean-jar:
+	rm -f tjc.jar tjcsrc.jar jtcl-?.?.?.jar
