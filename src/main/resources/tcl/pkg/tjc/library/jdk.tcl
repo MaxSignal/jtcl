@@ -250,7 +250,7 @@ proc jdk_tool_javac { filenames } {
     }
 
     # without Xlint, any output from javac is considered (erroneously) as failure
-    set javac_flags "-g -source 1.5 -target 1.5 -Xlint:-options"
+    set javac_flags "-g -Xlint:-options"
 
     if {![file exists $TJC_build]} {
         file mkdir $TJC_build
