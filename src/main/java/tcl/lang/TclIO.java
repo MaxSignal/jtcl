@@ -336,9 +336,11 @@ public class TclIO {
 			try {
 				chan.close();
 			} catch (IOException e) {
+                                // closing an already closed channel should be a no-op
+
 				// e.printStackTrace(System.err);
-				throw new TclRuntimeError("TclIO.unregisterChannel() Error: IOException when closing "
-						+ chan.getChanName() + ": " + e.getMessage());
+				// throw new TclRuntimeError("TclIO.unregisterChannel() Error: IOException when closing "
+				//		+ chan.getChanName() + ": " + e.getMessage());
 			}
 		}
 	}
