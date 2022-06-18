@@ -5,14 +5,14 @@
     <toolchain>
       <type>jdk</type>
       <provides>
-        <version>1.6</version>
+        <version>17</version>
         <vendor>sun</vendor>
       </provides>
       <configuration>
 
         <!-- change jdkHome to the location of your Java 1.6 sdk -->
 
-        <jdkHome>/usr/local/java16</jdkHome>
+        <jdkHome>${env.JAVA_HOME}</jdkHome>
 
 
       </configuration>

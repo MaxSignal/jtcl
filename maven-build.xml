@@ -45,7 +45,7 @@
 
   <path id="build.classpath"/>
   <path id="build.test.classpath">
-    <pathelement location="${maven.repo.local}/junit/junit/3.8.1/junit-3.8.1.jar"/>
+    <pathelement location="${maven.repo.local}/junit/junit/3.8.2/junit-3.8.2.jar"/>
   </path>
 
   <!-- ====================================================================== -->
@@ -69,10 +69,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="1.5" 
+           target="17" 
            verbose="false" 
            fork="false" 
-           source="1.5">
+           source="17">
       <src>
         <pathelement location="${maven.build.srcDir.0}"/>
       </src>
@@ -112,10 +112,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="1.5" 
+           target="17" 
            verbose="false" 
            fork="false" 
-           source="1.5">
+           source="17">
       <src>
         <pathelement location="${maven.build.testDir.0}"/>
       </src>
@@ -284,9 +284,9 @@
           description="Download all dependencies" 
           unless="maven.mode.offline">
     <mkdir dir="${maven.repo.local}"/>
-    <mkdir dir="${maven.repo.local}/junit/junit/3.8.1"/>
-    <get src="http://repo1.maven.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar" 
-         dest="${maven.repo.local}/junit/junit/3.8.1/junit-3.8.1.jar" 
+    <mkdir dir="${maven.repo.local}/junit/junit/3.8.2"/>
+    <get src="http://repo1.maven.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar" 
+         dest="${maven.repo.local}/junit/junit/3.8.2/junit-3.8.2.jar" 
          usetimestamp="false" 
          ignoreerrors="true"/>
   </target>
