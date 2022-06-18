@@ -113,11 +113,11 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <unjar src="tjc.jar"
                                        dest="target/classes">
                                 </unjar>
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
