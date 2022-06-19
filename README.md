@@ -1,3 +1,13 @@
+# JTcl
+
+This fork of JTcl (derived from https://github.com/wkbrd/jtcl and ultimately from
+http://jtcl-project.github.io/jtcl/) updated the project to modern JDKs.
+
+It currently builds and is compatible with JDK 17. Further versions will strive for compatibility
+with older versions of the JDKs (at least down to JDK 8).
+
+# Original README.md
+
 JTcl - Tcl Language Interpreter in Java
 
 http://jtcl-project.github.io/jtcl/
