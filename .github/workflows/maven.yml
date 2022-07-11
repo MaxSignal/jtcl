@@ -46,10 +46,11 @@ jobs:
     
     - name: Run test
       run: make test
-      
-      if: failure()
+     
     - name: Upload result test
+      if: failure()
       run: mkdir staging && tar cfvz staging_d/surefire-reports.tar.gz target/surefire-reports
+      if: failure()
     - uses: actions/upload-artifact@v3
       with:
         name: surefire-reports
