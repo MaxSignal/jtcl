@@ -35,7 +35,6 @@ jobs:
         
   test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -47,11 +46,12 @@ jobs:
     
     - name: Run test
       run: make test
-    - if: failure()
-      run: mkdir staging_d && tar cfvz staging_d/surefire-reports.tar.gz target/surefire-reports
+      
+      if: failure()
+    - name: Upload result test
+      run: mkdir staging && tar cfvz staging_d/surefire-reports.tar.gz target/surefire-reports
     - uses: actions/upload-artifact@v3
       with:
         name: surefire-reports
-        path: staging_d
-        
-        
+        path: staging
+  
