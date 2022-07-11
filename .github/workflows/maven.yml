@@ -22,8 +22,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: make package
+    
+    - name: Run test
+      run: make test
+    
+    - name: Build with Maven (skip test)
+      run: make package-skip-tests
       
     - name: Upload artifact
       run: mkdir staging && cp target/*.jar staging
