@@ -52,7 +52,7 @@ jobs:
       run: mkdir staging && tar cfvz staging/surefire-reports.tar.gz target/surefire-reports
       
     - uses: actions/upload-artifact@v3
-      if: success()
+      if: always()
       with:
         name: surefire-reports
         path: staging
