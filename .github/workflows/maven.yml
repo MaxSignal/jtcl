@@ -48,7 +48,7 @@ jobs:
     - name: Run test
       run: make test
     - if: failure()
-      run: mkdir staging_d && tar cfvz target/surefire-reports.tar.gz target/surefire-reports && cp target/surefire-reports.tar.gz staging_d
+      run: mkdir staging_d && tar cfvz staging_d/surefire-reports.tar.gz target/surefire-reports
     - uses: actions/upload-artifact@v3
       with:
         name: surefire-reports
